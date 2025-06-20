@@ -1,0 +1,1431 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DJ WILMER</title>
+<link rel="shortcut icon" href="https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png" type="image/png"/>
+<link href="manifest.json" rel="manifest"/>
+<link rel="icon" href="https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png" type="image/png"/>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding-top: 60px;
+    text-align: center;
+    background: none !important;
+}
+.header-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: blue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 10000;
+    animation: blink 1.2s infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+.logo-container {
+    margin: 100px auto 0;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+    animation: pulse 1.5s infinite;
+}
+.logo-container img {
+    width: 90%;
+    border-radius: 50%;
+}
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+.song-info {
+    margin-top: 40px;
+}
+.song-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+.song-artist {
+    font-size: 16px;
+    opacity: 0.8;
+}
+.player-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.control-button {
+    background: white;
+    color: #0033cc;
+    border: none;
+    border-radius: 50%;
+    padding: 18px;
+    font-size: 50px;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    animation: pulse 1.5s infinite;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 15px;
+}
+.social-icons a {
+    animation: pulse 1.5s infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s;
+}
+.social-icons a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255,255,255,0.7);
+    background: rgba(255, 255, 255, 0.4);
+}
+#hora-actual {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px black;
+  font-family: 'Segoe UI', sans-serif;
+}
+@keyframes parpadeo-en-vivo {
+    0%, 100% { background-color: red; }
+    50% { background-color: #ff6666; }
+}
+.live-status span:last-child {
+    animation: parpadeo-en-vivo 1s infinite;
+}
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px 0;
+    z-index: 10000;
+}
+
+.wave-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+}
+.wave-container span {
+    display: block;
+    width: 6px;
+    height: 20px;
+    background: lime;
+    animation: wave 1.2s infinite ease-in-out;
+}
+.wave-container span:nth-child(2) { animation-delay: 0.1s; }
+.wave-container span:nth-child(3) { animation-delay: 0.2s; }
+.wave-container span:nth-child(4) { animation-delay: 0.3s; }
+.wave-container span:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes wave {
+    0%, 100% { height: 20px; }
+    50% { height: 60px; }
+}
+
+
+#fondo-natural {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://i.postimg.cc/7PnpGrT5/IMG-20250619-093311.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -3;
+}
+
+
+
+
+@keyframes alternarColoresBarra {
+  0% { background-color: blue; }
+  12.5% { background-color: #ffcc00; }  /* amarillo */
+  25% { background-color: black; }
+  37.5% { background-color: red; }
+  50% { background-color: green; }
+  62.5% { background-color: #d63384; }  /* rosado oscuro */
+  75% { background-color: purple; }     /* morado */
+  87.5% { background-color: orange; }
+  100% { background-color: blue; }
+}
+.header-bar {
+  animation: alternarColoresBarra 40s infinite;
+}
+
+
+
+
+.social-icons a[href*="instagram"] { background-color: #E4405F; }
+.social-icons a[href*="facebook"] { background-color: #1877F2; }
+.social-icons a[href*="youtube"] { background-color: #FF0000; }
+.social-icons a[href*="whatsapp"] { background-color: #25D366; }
+.social-icons a[href*="tiktok"] { background: linear-gradient(45deg, #25F4EE, #FE2C55); }
+.social-icons a[href*="djwilmer.com"] { background-color: #ffcc00; }
+
+</style>
+</head>
+<body>
+
+<div id="fondo-natural"></div>
+<div id="caratula-fondo" style="filter: blur(20px) !important; transform: scale(1.1); transition: 0.3s;"></div>
+
+<style>
+
+
+
+#caratula-fondo {
+  filter: blur(20px) brightness(0.3) contrast(1.2);
+  z-index: -2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  z-index: -1;
+  transition: background-image 0.5s ease-in-out;
+}
+
+
+
+
+
+
+@keyframes alternarColoresBarra {
+  0% { background-color: blue; }
+  12.5% { background-color: #ffcc00; }  /* amarillo */
+  25% { background-color: black; }
+  37.5% { background-color: red; }
+  50% { background-color: green; }
+  62.5% { background-color: #d63384; }  /* rosado oscuro */
+  75% { background-color: purple; }     /* morado */
+  87.5% { background-color: orange; }
+  100% { background-color: blue; }
+}
+.header-bar {
+  animation: alternarColoresBarra 40s infinite;
+}
+
+
+
+
+.social-icons a[href*="instagram"] { background-color: #E4405F; }
+.social-icons a[href*="facebook"] { background-color: #1877F2; }
+.social-icons a[href*="youtube"] { background-color: #FF0000; }
+.social-icons a[href*="whatsapp"] { background-color: #25D366; }
+.social-icons a[href*="tiktok"] { background: linear-gradient(45deg, #25F4EE, #FE2C55); }
+.social-icons a[href*="djwilmer.com"] { background-color: #ffcc00; }
+
+</style>
+
+
+
+
+
+<button id="nativeShareButton" style="position: fixed; top: 10px; right: 10px; z-index: 10001; background: transparent; border: none; cursor: pointer;">
+<img alt="Compartir" src="https://i.postimg.cc/SRJFJcJy/compartir.png" width="40"/>
+</button>
+<script>
+
+const audioPlayer = document.getElementById("audioPlayer");
+let ultimaCancion = "";
+
+
+function actualizarNotificacion(cancion, imagen) {
+  if ('mediaSession' in navigator) {
+    let titulo = cancion || "DJ WILMER";
+    let artista = "Tu radio variada";
+    const separadores = [" - ", " – ", " — "];
+    for (const sep of separadores) {
+      if (titulo.includes(sep)) {
+        const partes = titulo.split(sep);
+        titulo = partes[1]?.trim() || titulo;
+        artista = partes[0]?.trim() || artista;
+        break;
+      }
+    }
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: titulo,
+      artist: artista + " - En vivo desde Perú",
+      album: "",
+      artwork: [
+        { src: imagen || "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+      ]
+    });
+
+    navigator.mediaSession.setActionHandler('play', () => {
+      audioPlayer.play();
+    });
+
+    navigator.mediaSession.setActionHandler('pause', () => {
+      audioPlayer.pause();
+    });
+  }
+}
+
+
+document.getElementById("nativeShareButton").addEventListener("click", () => {
+    if (navigator.share) {
+        navigator.share({
+            title: "Escucha DJ WILMER",
+            text: "Sintoniza en vivo ahora mismo 🎶📻",
+            url: window.location.href
+        }).then(() => console.log("✅ Compartido correctamente"))
+        .catch(err => console.error("❌ Error al compartir:", err));
+    } else {
+        alert("Tu navegador no admite la función de compartir nativo.");
+    }
+});
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "DJ WILMER",
+    artist: "Tu radio variada",
+    album: "En vivo desde Perú",
+    artwork: [
+      { src: "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audio.play();
+    boton.textContent = "⏸️";
+  });
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    audio.pause();
+    boton.textContent = "▶️";
+  });
+}
+</script>
+
+<div class="header-bar">
+  <div id="barra-carrusel">
+    <div class="slide" style="display: block;">🕒 <span id="hora-actual">00:00:00</span></div>
+    <div class="slide" style="display: none;">👥 Oyentes en línea: <span id="contador-oyentes">3500</span></div>
+    <div class="slide" style="display: none;">🎧 DJ WILMER - En vivo desde Perú</div>
+  </div>
+</div>
+
+
+
+<div id="caratulas-extra" style="margin-top:20px; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;"></div>
+<div class="logo-container">
+  <img id="coverImage" src="https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png" alt="Carátula" style="width:90%; height:90%; border-radius:50%; object-fit:cover; box-shadow:0 0 15px white;">
+</div>
+
+
+
+<div class="song-info">
+<div class="live-status">
+<span>REPRODUCIENDO</span>
+<span style="background:red; padding:3px 8px; border-radius:5px; margin-left:5px;">EN VIVO</span>
+</div>
+<p class="song-title">DJ WILMER</p>
+<p class="song-artist">Camporredondo Luya Amazonas</p>
+
+</div>
+
+
+
+
+<div id="metadata-duplicado" style="font-size:16px; font-weight:bold; margin-top:10px;">🎶 ...</div>
+
+
+
+
+<button id="installBtn" style="display:none;">
+📲 Instalar DJ WILMER
+</button>
+
+<div id="debug-panel" style="display:none;">
+  <div><strong>🧪 DEBUG:</strong></div>
+  <div id="debug-log" style="max-height:120px;overflow:auto;"></div>
+</div>
+
+<div class="player-controls">
+<button class="control-button" id="playPauseButton">▶️</button>
+</div>
+<div class="social-icons">
+<a href="https://www.instagram.com/wilmerdelgadocieza/"><img src="https://i.postimg.cc/Wzvd3dYf/instagram.png" width="40"/></a>
+<a href="https://web.facebook.com/DJCHOCHOBARWILMER"><img src="https://i.postimg.cc/4dfZMXr9/facebook.png" width="40"/></a>
+<a href="https://www.youtube.com/DJCHOCHOBARWILMER"><img src="https://i.postimg.cc/Fz7BYKf3/youtube.png" width="40"/></a>
+<a href="https://api.whatsapp.com/send/?phone=51984335569"><img src="https://i.postimg.cc/Hk0kPvVF/whatsapp.png" width="40"/></a>
+<a href="https://www.tiktok.com/@djchochobarwilmer?_t=ZM-8xIdVLRK4tc&_r=1"><img src="https://i.postimg.cc/HsmSG3zb/tiktok.png" width="40"/></a>
+<a href="https://wilmerdelgadocieza.blogspot.com/"><img src="https://i.postimg.cc/pyNMxj0p/web.png" width="50"/></a>
+</div>
+<audio crossorigin="anonymous" id="audioPlayer" src="https://stream.zeno.fm/wttrxavefwzuv"></audio>
+<script>
+const button = document.getElementById("playPauseButton");
+const audio = document.getElementById("audioPlayer");
+let isPlaying = false;
+button.addEventListener("click", () => {
+    if (!isPlaying) {
+        audio.play().then(() => {
+            button.textContent = "⏸️";
+        }).catch(err => {
+            alert("Haz clic nuevamente para iniciar el audio.");
+            console.error(err);
+        });
+    } else {
+        audio.pause();
+        button.textContent = "▶️";
+    }
+    isPlaying = !isPlaying;
+});
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.getElementById("installBtn").style.display = "block";
+});
+document.getElementById("installBtn").addEventListener("click", () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choice) => {
+            if (choice.outcome === "accepted") {
+                console.log("✅ Instalación aceptada");
+            }
+            deferredPrompt = null;
+        });
+    }
+});
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "DJ WILMER",
+    artist: "Tu radio variada",
+    album: "En vivo desde Perú",
+    artwork: [
+      { src: "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audio.play();
+    boton.textContent = "⏸️";
+  });
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    audio.pause();
+    boton.textContent = "▶️";
+  });
+}
+</script>
+<script>
+function actualizarHora() {
+    const ahora = new Date();
+    let horas = ahora.getHours();
+    const minutos = ahora.getMinutes().toString().padStart(2, '0');
+    const segundos = ahora.getSeconds().toString().padStart(2, '0');
+    const ampm = horas >= 12 ? 'PM' : 'AM';
+    horas = horas % 12 || 12;
+    const horaFormateada = horas + ':' + minutos + ':' + segundos + ' ' + ampm;
+    document.getElementById("hora-actual").textContent = horaFormateada;
+}
+setInterval(actualizarHora, 1000);
+actualizarHora();
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "DJ WILMER",
+    artist: "Tu radio variada",
+    album: "En vivo desde Perú",
+    artwork: [
+      { src: "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audio.play();
+    boton.textContent = "⏸️";
+  });
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    audio.pause();
+    boton.textContent = "▶️";
+  });
+}
+</script>
+<script>
+const songDisplay = document.getElementById("current-song");
+const source = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+source.addEventListener("message", function(event) {
+    try {
+        const data = JSON.parse(event.data);
+        if (data?.streamTitle) {
+      if (data.streamTitle !== ultimaCancion) {
+        ultimaCancion = data.streamTitle;
+        buscarCaratula(data.streamTitle);
+      }
+      actualizarNotificacion(data.streamTitle, cover?.src);
+            songDisplay.textContent = "🎶 " + data.streamTitle;
+        }
+    } catch (e) {
+        console.error("❌ Error al procesar metadata SSE:", e);
+    }
+});
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "DJ WILMER",
+    artist: "Tu radio variada",
+    album: "En vivo desde Perú",
+    artwork: [
+      { src: "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audio.play();
+    boton.textContent = "⏸️";
+  });
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    audio.pause();
+    boton.textContent = "▶️";
+  });
+}
+</script>
+<style>
+#waveCanvas {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 140px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+
+
+@keyframes alternarColoresBarra {
+  0% { background-color: blue; }
+  12.5% { background-color: #ffcc00; }  /* amarillo */
+  25% { background-color: black; }
+  37.5% { background-color: red; }
+  50% { background-color: green; }
+  62.5% { background-color: #d63384; }  /* rosado oscuro */
+  75% { background-color: purple; }     /* morado */
+  87.5% { background-color: orange; }
+  100% { background-color: blue; }
+}
+.header-bar {
+  animation: alternarColoresBarra 40s infinite;
+}
+
+
+
+
+.social-icons a[href*="instagram"] { background-color: #E4405F; }
+.social-icons a[href*="facebook"] { background-color: #1877F2; }
+.social-icons a[href*="youtube"] { background-color: #FF0000; }
+.social-icons a[href*="whatsapp"] { background-color: #25D366; }
+.social-icons a[href*="tiktok"] { background: linear-gradient(45deg, #25F4EE, #FE2C55); }
+.social-icons a[href*="djwilmer.com"] { background-color: #ffcc00; }
+
+</style>
+<style>
+canvas#waveCanvas {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 140px;
+  z-index: 99;
+  pointer-events: none;
+}
+
+
+
+@keyframes alternarColoresBarra {
+  0% { background-color: blue; }
+  12.5% { background-color: #ffcc00; }  /* amarillo */
+  25% { background-color: black; }
+  37.5% { background-color: red; }
+  50% { background-color: green; }
+  62.5% { background-color: #d63384; }  /* rosado oscuro */
+  75% { background-color: purple; }     /* morado */
+  87.5% { background-color: orange; }
+  100% { background-color: blue; }
+}
+.header-bar {
+  animation: alternarColoresBarra 40s infinite;
+}
+
+
+
+
+.social-icons a[href*="instagram"] { background-color: #E4405F; }
+.social-icons a[href*="facebook"] { background-color: #1877F2; }
+.social-icons a[href*="youtube"] { background-color: #FF0000; }
+.social-icons a[href*="whatsapp"] { background-color: #25D366; }
+.social-icons a[href*="tiktok"] { background: linear-gradient(45deg, #25F4EE, #FE2C55); }
+.social-icons a[href*="djwilmer.com"] { background-color: #ffcc00; }
+
+</style>
+<canvas id="waveCanvas"></canvas><script>
+const canvas = document.getElementById("waveCanvas");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = 140;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+const audio = document.getElementById("audioPlayer");
+const btn = document.getElementById("playPauseButton");
+
+btn.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = "⏸️";
+    startVisualizer();
+  } else {
+    audio.pause();
+    btn.textContent = "▶️";
+  }
+});
+
+function startVisualizer() {
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 1024;
+  const bufferLength = analyser.fftSize;
+  const dataArray = new Uint8Array(bufferLength);
+  const source = audioCtx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+
+  function draw() {
+    requestAnimationFrame(draw);
+    analyser.getByteTimeDomainData(dataArray);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#00ffff";
+    ctx.beginPath();
+
+    const sliceWidth = canvas.width / bufferLength;
+    let x = 0;
+
+    for (let i = 0; i < bufferLength; i++) {
+      const v = dataArray[i] / 128.0;
+      const y = (v * canvas.height) / 2;
+
+      if (i === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+
+      x += sliceWidth;
+    }
+
+    ctx.lineTo(canvas.width, canvas.height / 2);
+    ctx.stroke();
+  }
+
+  draw();
+}
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "DJ WILMER",
+    artist: "Tu radio variada",
+    album: "En vivo desde Perú",
+    artwork: [
+      { src: "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audio.play();
+    boton.textContent = "⏸️";
+  });
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    audio.pause();
+    boton.textContent = "▶️";
+  });
+}
+</script>
+<!-- Ondas SVG decorativas chispeantes -->
+<style>
+.decorative-wave-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  pointer-events: none;
+  z-index: 1;
+}
+.decorative-wave {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  background-size: cover;
+  transform: translateX(0);
+}
+.decorative-wave1 {
+  height: 160px;
+  background: url('data:image/svg+xml;utf8,<svg width="1200" height="160" viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 C300,180 600,30 900,100 C1100,150 1200,40 1200,100 L1200,160 L0,160 Z" fill=\"white\" opacity=\"0.06\"/></svg>') repeat-x;
+  animation: waveAnim1 2s linear infinite;
+}
+.decorative-wave2 {
+  height: 140px;
+  background: url('data:image/svg+xml;utf8,<svg width="1200" height="140" viewBox="0 0 1200 140" xmlns="http://www.w3.org/2000/svg"><path d="M0,90 C250,150 450,20 700,90 C950,140 1150,30 1200,90 L1200,140 L0,140 Z" fill=\"white\" opacity=\"0.09\"/></svg>') repeat-x;
+  animation: waveAnim2 1.5s linear infinite;
+}
+.decorative-wave3 {
+  height: 120px;
+  background: url('data:image/svg+xml;utf8,<svg width="1200" height="120" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,80 C200,120 500,10 800,80 C1050,120 1200,20 1200,80 L1200,120 L0,120 Z" fill=\"white\" opacity=\"0.12\"/></svg>') repeat-x;
+  animation: waveAnim3 1.2s linear infinite;
+}
+@keyframes waveAnim1 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes waveAnim2 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-60%); }
+}
+@keyframes waveAnim3 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-70%); }
+}
+
+
+
+@keyframes alternarColoresBarra {
+  0% { background-color: blue; }
+  12.5% { background-color: #ffcc00; }  /* amarillo */
+  25% { background-color: black; }
+  37.5% { background-color: red; }
+  50% { background-color: green; }
+  62.5% { background-color: #d63384; }  /* rosado oscuro */
+  75% { background-color: purple; }     /* morado */
+  87.5% { background-color: orange; }
+  100% { background-color: blue; }
+}
+.header-bar {
+  animation: alternarColoresBarra 40s infinite;
+}
+
+
+
+
+.social-icons a[href*="instagram"] { background-color: #E4405F; }
+.social-icons a[href*="facebook"] { background-color: #1877F2; }
+.social-icons a[href*="youtube"] { background-color: #FF0000; }
+.social-icons a[href*="whatsapp"] { background-color: #25D366; }
+.social-icons a[href*="tiktok"] { background: linear-gradient(45deg, #25F4EE, #FE2C55); }
+.social-icons a[href*="djwilmer.com"] { background-color: #ffcc00; }
+
+</style>
+
+<div class="decorative-wave-container">
+  <div class="decorative-wave decorative-wave1"></div>
+  <div class="decorative-wave decorative-wave2"></div>
+  <div class="decorative-wave decorative-wave3"></div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+const contenedorMetadata = document.getElementById("metadata-duplicado");
+const cover = document.getElementById("coverImage");
+const fallback = "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png";
+
+function buscarCaratula(search) {
+  fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(search)}&limit=1`)
+    .then(r => r.json())
+    .then(json => {
+      if (json.results?.length > 0 && json.results[0].artworkUrl100) {
+        const nueva = json.results[0].artworkUrl100.replace("100x100", "300x300");
+        cover.src = nueva;
+        console.log('🎨 Fondo carátula iTunes:', nueva); actualizarFondoCaratula(nueva);
+      } else {
+        fetch(`https://api.deezer.com/search?q=${encodeURIComponent(search)}`)
+          .then(r => r.json())
+          .then(data => {
+            if (data.data?.length > 0 && data.data[0].album?.cover_medium) {
+              const deezerImg = data.data[0].album.cover_medium;
+              cover.src = deezerImg;
+              console.log('🎨 Fondo carátula Deezer:', deezerImg); actualizarFondoCaratula(deezerImg);
+            } else {
+              cover.src = fallback;
+console.log('🎨 Fondo fallback usado'); actualizarFondoCaratula(fallback);
+        logDebug('🎯 MusicBrainz...');
+buscarEnMusicBrainzFlexible(artista, cancion);
+            }
+          })
+          .catch(() => cover.src = fallback);
+      }
+    })
+    .catch(() => cover.src = fallback);
+}
+
+const sourceMeta = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+sourceMeta.addEventListener("message", function(event) {
+  try {
+    const data = JSON.parse(event.data);
+    if (data?.streamTitle) {
+      if (data.streamTitle !== ultimaCancion) {
+        ultimaCancion = data.streamTitle;
+        buscarCaratula(data.streamTitle);
+      }
+      actualizarNotificacion(data.streamTitle, cover?.src);
+      buscarCaratula(data.streamTitle);
+      if (contenedorMetadata) {
+        contenedorMetadata.textContent = "🎶 " + data.streamTitle;
+      }
+    }
+  } catch {
+    cover.src = fallback;
+console.log('🎨 Fondo fallback usado'); actualizarFondoCaratula(fallback);
+        logDebug('🎯 MusicBrainz...');
+buscarEnMusicBrainzFlexible(artista, cancion);
+  }
+});
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "DJ WILMER",
+    artist: "Tu radio variada",
+    album: "En vivo desde Perú",
+    artwork: [
+      { src: "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audio.play();
+    boton.textContent = "⏸️";
+  });
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    audio.pause();
+    boton.textContent = "▶️";
+  });
+}
+</script>
+
+
+<script>
+const fondoCaratula = document.getElementById("caratula-fondo");
+
+function actualizarFondoCaratula(url) {
+  fondoCaratula.style.backgroundImage = `url('${url}')`;
+}
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "DJ WILMER",
+    artist: "Tu radio variada",
+    album: "En vivo desde Perú",
+    artwork: [
+      { src: "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audio.play();
+    boton.textContent = "⏸️";
+  });
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    audio.pause();
+    boton.textContent = "▶️";
+  });
+}
+</script>
+
+
+<script>
+const metadata = document.getElementById("metadata");
+const source = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+source.addEventListener("message", function(event) {
+  try {
+    const data = JSON.parse(event.data);
+    if (data?.streamTitle) {
+      if (data.streamTitle !== ultimaCancion) {
+        ultimaCancion = data.streamTitle;
+        buscarCaratula(data.streamTitle);
+      }
+      actualizarNotificacion(data.streamTitle, cover?.src);
+      metadata.textContent = "🎶 " + data.streamTitle;
+    }
+  } catch (e) {
+    console.error("Error al leer metadatos:", e);
+  }
+});
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "DJ WILMER",
+    artist: "Tu radio variada",
+    album: "En vivo desde Perú",
+    artwork: [
+      { src: "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audio.play();
+    boton.textContent = "⏸️";
+  });
+
+  navigator.mediaSession.setActionHandler('pause', () => {
+    audio.pause();
+    boton.textContent = "▶️";
+  });
+}
+</script>
+
+
+
+
+
+
+
+<script>
+const tituloCancion = document.querySelector(".song-title");
+const artistaCancion = document.querySelector(".song-artist");
+const contenedorMetadata = document.getElementById("metadata-duplicado");
+const cover = document.getElementById("coverImage");
+const fondoCaratula = document.getElementById("caratula-fondo");
+const fallback = "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png";
+
+// Normaliza texto para comparación (quitar tildes, mayúsculas, espacios duplicados)
+function normalizar(texto) {
+  return texto.toLowerCase()
+              .normalize("NFD")
+              .replace(/[̀-ͯ]/g, "")
+              .replace(/[^a-z0-9 ]/g, "")
+              .replace(/\s+/g, " ")
+              .trim();
+}
+
+function limpiarTexto(tituloOriginal) {
+  return tituloOriginal.replace(/^\d+\.\s*/, "").trim();
+}
+
+function actualizarTodo(tituloOriginal) {
+  const limpio = limpiarTexto(tituloOriginal);
+  let artista = "DJ WILMER";
+  let cancion = limpio;
+
+  const separadores = [" - ", " – ", " — ", "–", "-"];
+  for (const sep of separadores) {
+    if (limpio.includes(sep)) {
+      const partes = limpio.split(sep);
+      if (partes.length >= 2) {
+        artista = partes[0].trim();
+        cancion = partes.slice(1).join(" ").trim();
+        break;
+      }
+    }
+  }
+
+  if (tituloCancion) tituloCancion.textContent = cancion;
+  if (artistaCancion) artistaCancion.textContent = artista;
+  if (contenedorMetadata) contenedorMetadata.textContent = "🎶 " + limpio;
+
+  buscarCaratulaFlexible(artista, cancion);
+}
+
+function actualizarFondoCaratula(url) {
+  fondoCaratula.style.backgroundImage = `url('${url}')`;
+}
+
+function buscarCaratulaFlexible(artista, cancion) {
+  const query = `${artista} ${cancion}`;
+  const artistaNorm = normalizar(artista);
+  const cancionNorm = normalizar(cancion);
+
+  logDebug('🎯 iTunes...');
+fetch("https://itunes.apple.com/search?term=" + encodeURIComponent(query) + "&limit=10")
+    .then(res => res.json())
+    .then(data => {
+      const match = data.results?.find(item =>
+        normalizar(item.artistName || "").includes(artistaNorm) &&
+        normalizar(item.trackName || "").includes(cancionNorm)
+      );
+      const img = match?.artworkUrl100?.replace("100x100", "300x300");
+      if (img) {
+        cover.src = img;
+mostrarCaratulaExtra(img);
+        actualizarFondoCaratula(img);
+mostrarCaratulaExtra(img);
+      } else {
+        buscarEnDeezerFlexible(artistaNorm, cancionNorm);
+      }
+    })
+    .catch(() => buscarEnDeezerFlexible(artistaNorm, cancionNorm));
+
+
+function logDebug('🎯 Spotify...');
+buscarEnSpotifyFlexible(artista, cancion) {
+  const query = artista + " " + cancion + " site:open.spotify.com";
+  fetch("https://www.bing.com/images/search?q=" + encodeURIComponent(query))
+    .then(response => response.text())
+    .then(html => {
+      const match = html.match(/<img[^>]+src="([^"]+)"[^>]+alt="([^"]*)"/);
+      const img = match ? match[1] : null;
+      if (img) {
+        cover.src = img;
+mostrarCaratulaExtra(img);
+        actualizarFondoCaratula(img);
+mostrarCaratulaExtra(img);
+      } else {
+        logDebug('🎯 Last.fm...');
+buscarEnLastfmFlexible(artista, cancion);
+      }
+    })
+    .catch(() => logDebug('🎯 Last.fm...');
+buscarEnLastfmFlexible(artista, cancion));
+}
+
+function logDebug('🎯 Last.fm...');
+buscarEnLastfmFlexible(artista, cancion) {
+  const api = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=5bd9ccf47a3d1e1b74ffeb88e8b2b800&artist=" + encodeURIComponent(artista) + "&track=" + encodeURIComponent(cancion) + "&format=json";
+  fetch(api)
+    .then(r => r.json())
+    .then(data => {
+      const img = data.track?.album?.image?.pop()?.["#text"];
+      if (img) {
+        cover.src = img;
+mostrarCaratulaExtra(img);
+        actualizarFondoCaratula(img);
+mostrarCaratulaExtra(img);
+      } else {
+        logDebug('🎯 Discogs...');
+buscarEnDiscogsFlexible(artista, cancion);
+      }
+    })
+    .catch(() => logDebug('🎯 Discogs...');
+buscarEnDiscogsFlexible(artista, cancion));
+}
+
+function logDebug('🎯 Discogs...');
+buscarEnDiscogsFlexible(artista, cancion) {
+  const query = artista + " " + cancion;
+  const url = "https://www.discogs.com/search/?q=" + encodeURIComponent(query);
+  fetch(url)
+    .then(response => response.text())
+    .then(html => {
+      const match = html.match(/<img[^>]+class="search_result_image"[^>]+src="([^"]+)"/);
+      const img = match ? match[1] : null;
+      if (img) {
+        cover.src = img;
+mostrarCaratulaExtra(img);
+        actualizarFondoCaratula(img);
+mostrarCaratulaExtra(img);
+      } else {
+        cover.src = fallback;
+        actualizarFondoCaratula(fallback);
+      }
+    })
+    .catch(() => {
+      cover.src = fallback;
+      actualizarFondoCaratula(fallback);
+    });
+}
+
+}
+
+function buscarEnDeezerFlexible(artistaNorm, cancionNorm) {
+  const query = `${artistaNorm} ${cancionNorm}`;
+  logDebug('🎯 Deezer...');
+fetch("https://api.deezer.com/search?q=" + encodeURIComponent(query))
+    .then(res => res.json())
+    .then(data => {
+      const match = data.data?.find(item =>
+        normalizar(item.artist?.name || "").includes(artistaNorm) &&
+        normalizar(item.title || "").includes(cancionNorm)
+      );
+      const img = match?.album?.cover_medium;
+      if (img) {
+        cover.src = img;
+mostrarCaratulaExtra(img);
+        actualizarFondoCaratula(img);
+mostrarCaratulaExtra(img);
+      } else {
+        cover.src = fallback;
+        actualizarFondoCaratula(fallback);
+        logDebug('🎯 MusicBrainz...');
+buscarEnMusicBrainzFlexible(artista, cancion);
+      }
+    })
+    .catch(() => {
+      cover.src = fallback;
+      actualizarFondoCaratula(fallback);
+        logDebug('🎯 MusicBrainz...');
+buscarEnMusicBrainzFlexible(artista, cancion);
+    });
+}
+
+const stream = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+stream.addEventListener("message", function(event) {
+  try {
+    const data = JSON.parse(event.data);
+    if (data?.streamTitle) {
+      logDebug('🎵 Título detectado: ' + data.streamTitle);
+actualizarTodo(data.streamTitle);
+    }
+  } catch (e) {
+    cover.src = fallback;
+    actualizarFondoCaratula(fallback);
+        logDebug('🎯 MusicBrainz...');
+buscarEnMusicBrainzFlexible(artista, cancion);
+  }
+});
+
+function mostrarCaratulaExtra(imgUrl) {
+  if (!imgUrl) return;
+  const extra = document.getElementById("caratulas-extra");
+  if (!extra) return;
+  const existe = Array.from(extra.children).some(img => img.src === imgUrl);
+  if (!existe) {
+    const mini = document.createElement("img");
+    mini.src = imgUrl;
+    mini.style.width = "60px";
+    mini.style.height = "60px";
+    mini.style.borderRadius = "10px";
+    mini.style.objectFit = "cover";
+    mini.style.border = "2px solid white";
+    extra.appendChild(mini);
+  }
+}
+
+
+function logDebug('🎯 MusicBrainz...');
+buscarEnMusicBrainzFlexible(artista, cancion) {
+  const query = encodeURIComponent(artista + " " + cancion);
+  fetch("https://musicbrainz.org/ws/2/recording/?query=" + query + "&fmt=json&limit=1")
+    .then(r => r.json())
+    .then(data => {
+      const release = data.recordings?.[0]?.releases?.[0];
+      const releaseId = release?.id;
+      if (releaseId) {
+        fetch("https://coverartarchive.org/release/" + releaseId)
+          .then(r => r.json())
+          .then(info => {
+            const img = info?.images?.[0]?.image;
+            if (img) {
+              cover.src = img;
+              actualizarFondoCaratula(img);
+              mostrarCaratulaExtra(img);
+            } else {
+              logDebug('🎯 Fanart.tv...');
+buscarEnFanartTVFlexible(artista, cancion);
+logDebug('🎯 Google Images...');
+buscarEnGoogleImagesFlexible(artista, cancion);
+logDebug('🎯 Genius...');
+buscarEnGeniusFlexible(artista, cancion);
+            }
+          })
+          .catch(() => logDebug('🎯 Fanart.tv...');
+buscarEnFanartTVFlexible(artista, cancion));
+      } else {
+        logDebug('🎯 Fanart.tv...');
+buscarEnFanartTVFlexible(artista, cancion);
+logDebug('🎯 Google Images...');
+buscarEnGoogleImagesFlexible(artista, cancion);
+logDebug('🎯 Genius...');
+buscarEnGeniusFlexible(artista, cancion);
+      }
+    })
+    .catch(() => logDebug('🎯 Fanart.tv...');
+buscarEnFanartTVFlexible(artista, cancion));
+}
+
+function logDebug('🎯 Fanart.tv...');
+buscarEnFanartTVFlexible(artista, cancion) {
+  const query = encodeURIComponent(artista + " " + cancion + " fanart");
+  fetch("https://duckduckgo.com/?q=" + query + "&iax=images&ia=images")
+    .then(r => r.text())
+    .then(html => {
+      const match = html.match(/"image":"(https:[^"]+\.(jpg|jpeg|png))"/);
+      const img = match ? match[1].replace(/\\/g, "") : null;
+      if (img) {
+        cover.src = img;
+        actualizarFondoCaratula(img);
+        mostrarCaratulaExtra(img);
+      }
+    })
+    .catch(() => {});
+}
+
+
+function logDebug('🎯 Google Images...');
+buscarEnGoogleImagesFlexible(artista, cancion) {
+  const query = encodeURIComponent(artista + " " + cancion + " album cover");
+  fetch("https://www.google.com/search?tbm=isch&q=" + query)
+    .then(response => response.text())
+    .then(html => {
+      const matches = [...html.matchAll(/"ou":"(https:\/\/[^"]+)"/g)];
+      if (matches.length > 0) {
+        matches.slice(0, 3).forEach(m => {
+          const img = m[1].replace(/\\/g, "");
+          cover.src = img;
+          actualizarFondoCaratula(img);
+          mostrarCaratulaExtra(img);
+        });
+      } else {
+        logDebug('🎯 Yandex Images...');
+buscarEnYandexFlexible(artista, cancion);
+      }
+    })
+    .catch(() => logDebug('🎯 Yandex Images...');
+buscarEnYandexFlexible(artista, cancion));
+}
+
+function logDebug('🎯 Yandex Images...');
+buscarEnYandexFlexible(artista, cancion) {
+  const query = encodeURIComponent(artista + " " + cancion + " album");
+  fetch("https://yandex.com/images/search?text=" + query)
+    .then(r => r.text())
+    .then(html => {
+      const match = html.match(/"previewUrl":"(https:[^"]+?)"/);
+      const img = match ? match[1].replace(/\\/g, "") : null;
+      if (img) {
+        cover.src = img;
+        actualizarFondoCaratula(img);
+        mostrarCaratulaExtra(img);
+      }
+    })
+    .catch(() => {});
+}
+
+function logDebug('🎯 Genius...');
+buscarEnGeniusFlexible(artista, cancion) {
+  const query = encodeURIComponent(artista + " " + cancion + " site:genius.com");
+  fetch("https://duckduckgo.com/?q=" + query + "&ia=web")
+    .then(r => r.text())
+    .then(html => {
+      const match = html.match(/"image":"(https:[^"]+\.(jpg|jpeg|png))"/);
+      const img = match ? match[1].replace(/\\/g, "") : null;
+      if (img) {
+        cover.src = img;
+        actualizarFondoCaratula(img);
+        mostrarCaratulaExtra(img);
+      }
+    })
+    .catch(() => {});
+}
+
+
+function logDebug(msg) {
+  const panel = document.getElementById("debug-log");
+  if (panel) {
+    const line = document.createElement("div");
+    line.textContent = msg;
+    panel.appendChild(line);
+    panel.scrollTop = panel.scrollHeight;
+  }
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+const fondoCaratula = document.getElementById("caratula-fondo");
+const cover = document.getElementById("coverImage");
+
+function actualizarFondoCaratula(url) {
+  if (url && fondoCaratula) {
+    fondoCaratula.style.backgroundImage = `url('${url}')`;
+  }
+}
+
+const observer = new MutationObserver(() => {
+  if (cover?.src) actualizarFondoCaratula(cover.src);
+});
+observer.observe(cover, { attributes: true, attributeFilter: ["src"] });
+
+if (cover?.src) actualizarFondoCaratula(cover.src);
+</script>
+
+
+<script>
+const fondoNatural = document.getElementById("fondo-natural");
+function mostrarFondoDefault() {
+  if (fondoNatural) fondoNatural.style.opacity = "1";
+}
+function ocultarFondoDefault() {
+  if (fondoNatural) fondoNatural.style.opacity = "0";
+}
+
+const observer = new MutationObserver(() => {
+  if (cover?.src && !cover.src.includes("DJ-WILMER-OFICIAL.png")) {
+    ocultarFondoDefault();
+    actualizarFondoCaratula(cover.src);
+  } else {
+    mostrarFondoDefault();
+  }
+});
+observer.observe(cover, { attributes: true, attributeFilter: ["src"] });
+</script>
+
+
+<script>
+const slides = document.querySelectorAll("#barra-carrusel .slide");
+let indice = 0;
+setInterval(() => {
+  slides.forEach((s, i) => s.style.display = i === indice ? "block" : "none");
+  indice = (indice + 1) % slides.length;
+}, 5000);
+</script>
+
+
+<script>
+const spanOyentes = document.getElementById("contador-oyentes");
+try {
+  const fuenteOyentes = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+  fuenteOyentes.addEventListener("message", function(event) {
+    try {
+      const datos = JSON.parse(event.data);
+      if (datos.listeners && spanOyentes) {
+        spanOyentes.textContent = datos.listeners;
+      }
+    } catch (e) {
+      console.error("❌ Error al actualizar oyentes:", e);
+    }
+  });
+} catch (error) {
+  console.warn("⚠️ SSE no disponible para oyentes:", error);
+}
+</script>
+
+
+
+<footer style="position: fixed; bottom: 0; width: 100%; background: transparent; color: white; text-align: center; padding: 10px 0; font-size: 14px; z-index: 99999;">
+  <div id="footer-carousel">
+    <div class="footer-slide" style="display: block;">Diseñado por <strong>Streaming Delgado: 984335569</strong></div>
+    <div class="footer-slide" style="display: none;">📦 Venta de proyectos de app para radio Y TV</div>
+    <div class="footer-slide" style="display: none;">🌐 Desarrollo de páginas web</div>
+    <div class="footer-slide" style="display: none;">📲 Apps móviles personalizadas</div>
+  </div>
+</footer>
+
+<script>
+const footerSlides = document.querySelectorAll("#footer-carousel .footer-slide");
+let footerIndex = 0;
+setInterval(() => {
+  footerSlides.forEach((s, i) => s.style.display = i === footerIndex ? "block" : "none");
+  footerIndex = (footerIndex + 1) % footerSlides.length;
+}, 5000);
+</script>
+
+
+
+
+<script>
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Intento de instalación automática si el usuario permite
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === "accepted") {
+            console.log("✅ Aplicación instalada automáticamente");
+        } else {
+            console.log("❌ Usuario rechazó la instalación automática");
+        }
+        deferredPrompt = null;
+    });
+});
+</script>
+
+
+</body>
+
+</html>

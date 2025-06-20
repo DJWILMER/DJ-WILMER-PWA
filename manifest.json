@@ -1,0 +1,16 @@
+
+{
+  "name": "DJ WILMER Radio",
+  "short_name": "DJ WILMER",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ffcc00",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/P5yTNt55/DJ-WILMER-OFICIAL.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
