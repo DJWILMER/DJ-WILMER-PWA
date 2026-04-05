@@ -413,11 +413,11 @@ if ('mediaSession' in navigator) {
 <a href="https://www.instagram.com/wilmerdelgadocieza/"><img src="https://i.postimg.cc/Wzvd3dYf/instagram.png" width="40"/></a>
 <a href="https://web.facebook.com/DJCHOCHOBARWILMER"><img src="https://i.postimg.cc/4dfZMXr9/facebook.png" width="40"/></a>
 <a href="https://www.youtube.com/DJCHOCHOBARWILMER"><img src="https://i.postimg.cc/Fz7BYKf3/youtube.png" width="40"/></a>
-<a href="https://api.whatsapp.com/send/?phone=51984335569"><img src="https://i.postimg.cc/Hk0kPvVF/whatsapp.png" width="40"/></a>
+<a href="https://api.whatsapp.com/send/?phone=51980634177"><img src="https://i.postimg.cc/Hk0kPvVF/whatsapp.png" width="40"/></a>
 <a href="https://www.tiktok.com/@djchochobarwilmer?_t=ZM-8xIdVLRK4tc&_r=1"><img src="https://i.postimg.cc/HsmSG3zb/tiktok.png" width="40"/></a>
 <a href="https://wilmerdelgadocieza.blogspot.com/"><img src="https://i.postimg.cc/pyNMxj0p/web.png" width="50"/></a>
 </div>
-<audio crossorigin="anonymous" id="audioPlayer" src="https://stream.zeno.fm/wttrxavefwzuv"></audio>
+<audio crossorigin="anonymous" id="audioPlayer" src="https://radios03.audiostreaming.ar:10438/stream"></audio>
 <script>
 const button = document.getElementById("playPauseButton");
 const audio = document.getElementById("audioPlayer");
@@ -512,7 +512,7 @@ if ('mediaSession' in navigator) {
 </script>
 <script>
 const songDisplay = document.getElementById("current-song");
-const source = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+const source = new EventSource("https://radios03.audiostreaming.ar/cp/get_info.php?p=9128");
 source.addEventListener("message", function(event) {
     try {
         const data = JSON.parse(event.data);
@@ -837,7 +837,7 @@ buscarEnMusicBrainzFlexible(artista, cancion);
     .catch(() => cover.src = fallback);
 }
 
-const sourceMeta = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+const sourceMeta = new EventSource("https://radios03.audiostreaming.ar/cp/get_info.php?p=9128");
 sourceMeta.addEventListener("message", function(event) {
   try {
     const data = JSON.parse(event.data);
@@ -915,7 +915,7 @@ if ('mediaSession' in navigator) {
 
 <script>
 const metadata = document.getElementById("metadata");
-const source = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+const source = new EventSource("https://radios03.audiostreaming.ar/cp/get_info.php?p=9128");
 source.addEventListener("message", function(event) {
   try {
     const data = JSON.parse(event.data);
@@ -1137,7 +1137,7 @@ buscarEnMusicBrainzFlexible(artista, cancion);
     });
 }
 
-const stream = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+const stream = new EventSource("https://radios03.audiostreaming.ar/cp/get_info.php?p=9128");
 stream.addEventListener("message", function(event) {
   try {
     const data = JSON.parse(event.data);
@@ -1366,7 +1366,7 @@ setInterval(() => {
 <script>
 const spanOyentes = document.getElementById("contador-oyentes");
 try {
-  const fuenteOyentes = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/wke4ravefwzuv");
+  const fuenteOyentes = new EventSource("https://radios03.audiostreaming.ar/cp/get_info.php?p=9128");
   fuenteOyentes.addEventListener("message", function(event) {
     try {
       const datos = JSON.parse(event.data);
